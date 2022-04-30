@@ -7,7 +7,7 @@
 
 <div class="card">
     <h5 class="card-header">
-        <a href="/categories/create" class="btn btn-primary">Add Category</a>
+        <a href="/categories/create" class="btn btn-primary">Add category</a>
     </h5>
     <div class="card-body">
         @if ($message = Session::get('message'))

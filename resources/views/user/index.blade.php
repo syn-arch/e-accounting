@@ -7,7 +7,7 @@
 
 <div class="card">
     <h5 class="card-header">
-        <a href="/users/create" class="btn btn-primary">Add User</a>
+        <a href="/users/create" class="btn btn-primary">Add user</a>
     </h5>
     <div class="card-body">
         @if ($message = Session::get('message'))

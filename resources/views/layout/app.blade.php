@@ -106,73 +106,81 @@
 
                 <div class="menu-inner-shadow"></div>
 
+                @php
+                    $master_menu = [
+                        'accounts',
+                        'users',
+                        'categories',
+                    ];
+                @endphp
+
                 <ul class="menu-inner py-1">
-                    <li class="menu-item">
+                    <li class="menu-item {{ request()->is('dashboard') ? 'active' : ''}}">
                         <a href="/dashboard" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{ in_array(request()->segment(1), $master_menu) ? 'open' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-data"></i>
                             <div data-i18n="Layouts">Master Data</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item">
+                            <li class="menu-item {{ request()->is('users') ? 'active' : ''}} {{ request()->segment(1) == "users" ? 'active' : '' }}">
                                 <a href="/users" class="menu-link">
                                     <div data-i18n="Without menu">Users</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{ request()->is('categories') ? 'active' : ''}} {{ request()->segment(1) == "categories" ? 'active' : '' }}">
                                 <a href="/categories" class="menu-link">
                                     <div data-i18n="Without menu">Categories</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{ request()->is('accounts') ? 'active' : ''}} {{ request()->segment(1) == "accounts" ? 'active' : '' }}">
                                 <a href="/accounts" class="menu-link">
                                     <div data-i18n="Without menu">Accounts</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{ request()->segment(1) == "transactions" ? 'open' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-transfer-alt"></i>
                             <div data-i18n="Layouts">Transactions</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="/transaction/create" class="menu-link">
+                            <li class="menu-item {{ request()->segment(2) == "create" ? 'active' : '' }}">
+                                <a href="/transactions/create" class="menu-link">
                                     <div data-i18n="Without menu">Create New</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{ request()->segment(1) == "transactions" ? 'active' : '' }}">
                                 <a href="/transactions" class="menu-link">
                                     <div data-i18n="Without menu">List Transactions</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{ request()->segment(1) == "reports" ? 'open' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
                             <div data-i18n="Layouts">Report</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item">
+                            <li class="menu-item {{ request()->segment(1) == "reports" ? 'active' : '' }}">
                                 <a href="/reports" class="menu-link">
-                                    <div data-i18n="Without menu">Transactions</div>
+                                    <div data-i18n="Without menu">Profit and loss</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{ request()->segment(2) == "chart" ? 'active' : '' }}">
                                 <a href="/reports/chart" class="menu-link">
                                     <div data-i18n="Without menu">Chart</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{ request()->is('profile') ? 'active' : ''}}">
                         <a href="/profile" class="menu-link">
                             <i class='menu-icon tf-icons bx bx-user'></i>
                             <div data-i18n="Analytics">Profile</div>
