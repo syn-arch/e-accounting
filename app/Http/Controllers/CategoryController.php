@@ -36,6 +36,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
         category::create($request->all());
 
         return redirect('/categories')->with('message', 'Data added successfully');
@@ -72,6 +75,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
         $category->update($request->all());
 
         return redirect('/categories')->with('message', 'Data updated successfully');

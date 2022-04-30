@@ -3,82 +3,33 @@
 @section('title', 'Categories')
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories /</span> List Categories</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories /</span> Add Categories</h4>
 
 <div class="card">
     <h5 class="card-header">
-        <a href="/categories/create" class="btn btn-primary">Add Category</a>
+        <a href="/categories" class="btn btn-primary">Back</a>
     </h5>
     <div class="card-body">
-        @if ($message = Session::get('message'))
-        <div class="alert alert-success mt-4">
-            <strong>Success</strong>
-            <p>{{$message}}</p>
-        </div>
-        @endif
-        <div class="table-responsive text-nowrap">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    @foreach ($categories as $index => $category)
-                    <tr>
-                        <td>{{$index+1}}</td>
-                        <td>{{$category->name}}</td>
-                        <td>
-                            <a class="btn btn-warning" href="{{ route('categories.edit', $category->id) }}"><i
-                                    class="bx bx-edit-alt me-1"></i>
-                                Edit
-                            </a>
-                            <button class="btn btn-danger delete-button" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal" data-id={{$category->id}}>
-                                <i class="bx bx-trash me-1"></i>
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        <form method="POST" action="{{route('categories.store')}}">
+            @csrf
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="name">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror name" placeholder="name"
+                        name="name" value="{{ old('name') }}">
+                    @error('name')
+                    <small class="text-danger">
+                        {{$message}}
+                    </small>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">Deleted data cannot be recovered.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" class="d-inline form-delete">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-@push('js')
-<script>
-    const delete_button = document.querySelectorAll('.delete-button');
-    delete_button.forEach(element => {
-        element.addEventListener('click', function(){
-            const id_category = this.getAttribute('data-id')
-            const form_delete = document.querySelector('.form-delete');
-            form_delete.action = `/categories/${id_category}`
-        })
-    });
-</script>
-@endpush
 @endsection
