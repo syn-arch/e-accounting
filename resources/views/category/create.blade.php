@@ -15,7 +15,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="name">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror name" placeholder="name"
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="name"
                         name="name" value="{{ old('name') }}">
                     @error('name')
                     <small class="text-danger">

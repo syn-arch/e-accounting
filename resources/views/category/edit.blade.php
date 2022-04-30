@@ -3,7 +3,7 @@
 @section('title', 'Categories')
 
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories /</span> Add Categories</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories /</span> Edit Categories</h4>
 
 <div class="card">
     <h5 class="card-header">
@@ -16,8 +16,13 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="name">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="name" name="name"
-                        value="{{ old('name', $category->name) }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        placeholder="name" name="name" value="{{ old('name', $category->name) }}">
+                    @error('name')
+                    <small class="text-danger">
+                        {{$message}}
+                    </small>
+                    @enderror
                 </div>
             </div>
             <div class="row mb-3">
