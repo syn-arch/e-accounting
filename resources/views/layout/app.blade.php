@@ -150,12 +150,12 @@
                             <div data-i18n="Layouts">Transactions</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item {{ request()->segment(2) == "create" ? 'active' : '' }}">
+                            <li class="menu-item {{ request()->segment(1) == "transactions" && request()->segment(2) == 'create' ? 'active' : '' }}">
                                 <a href="/transactions/create" class="menu-link">
                                     <div data-i18n="Without menu">Create New</div>
                                 </a>
                             </li>
-                            <li class="menu-item {{ request()->segment(1) == "transactions" ? 'active' : '' }}">
+                            <li class="menu-item {{ request()->segment(1) == "transactions" && request()->segment(2) == '' ? 'active' : '' }}">
                                 <a href="/transactions" class="menu-link">
                                     <div data-i18n="Without menu">List Transactions</div>
                                 </a>
@@ -168,14 +168,14 @@
                             <div data-i18n="Layouts">Report</div>
                         </a>
                         <ul class="menu-sub">
+                             <li class="menu-item {{ request()->segment(2) == "transactions" ? 'active' : '' }}">
+                                <a href="/reports/transactions" class="menu-link">
+                                    <div data-i18n="Without menu">Transactions</div>
+                                </a>
+                            </li>
                             <li class="menu-item {{ request()->segment(1) == "reports" ? 'active' : '' }}">
                                 <a href="/reports" class="menu-link">
                                     <div data-i18n="Without menu">Profit and loss</div>
-                                </a>
-                            </li>
-                            <li class="menu-item {{ request()->segment(2) == "chart" ? 'active' : '' }}">
-                                <a href="/reports/chart" class="menu-link">
-                                    <div data-i18n="Without menu">Chart</div>
                                 </a>
                             </li>
                         </ul>

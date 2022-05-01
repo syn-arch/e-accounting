@@ -15,6 +15,10 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_user');
+            $table->string('reff_no');
+            $table->string('total_debit');
+            $table->string('total_credit');
             $table->timestamps();
         });
     }

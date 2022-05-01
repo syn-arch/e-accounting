@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="password">password</label>
+                <label class="col-sm-2 col-form-label" for="password">password (fill for change)</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password"
                         name="password" value="{{ old('password') }}">

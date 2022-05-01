@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,6 @@ Route::group(['middleware' => 'auth'], function () {
         '/users' => UserController::class,
         '/categories' => CategoryController::class,
         '/accounts' => AccountController::class,
+        '/transactions' => TransactionController::class,
     ]);
 });
