@@ -168,14 +168,14 @@
                             <div data-i18n="Layouts">Report</div>
                         </a>
                         <ul class="menu-sub">
-                             <li class="menu-item {{ request()->segment(2) == "transactions" ? 'active' : '' }}">
+                             <li class="menu-item {{ request()->segment(1) == "reports" && request()->segment(2) == "transactions" ? 'active' : '' }}">
                                 <a href="/reports/transactions" class="menu-link">
                                     <div data-i18n="Without menu">Transactions</div>
                                 </a>
                             </li>
-                            <li class="menu-item {{ request()->segment(1) == "reports" ? 'active' : '' }}">
+                            <li class="menu-item {{ request()->segment(1) == "reports" && request()->segment(2) == "" ? 'active' : '' }}">
                                 <a href="/reports" class="menu-link">
-                                    <div data-i18n="Without menu">Profit and loss</div>
+                                    <div data-i18n="Without menu">Profit And Loss</div>
                                 </a>
                             </li>
                         </ul>

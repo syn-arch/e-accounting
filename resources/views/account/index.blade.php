@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Account Number</th>
                         <th>Name</th>
                         <th>Category</th>
                         <th>Actions</th>
@@ -30,6 +31,7 @@
                     @foreach ($accounts as $index => $account)
                     <tr>
                         <td>{{$index+1}}</td>
+                        <td>{{$account->account_number}}</td>
                         <td>{{$account->name}}</td>
                         <td>{{$account->category->name}}</td>
                         <td>

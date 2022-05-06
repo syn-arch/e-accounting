@@ -13,6 +13,18 @@
         <form method="POST" action="{{route('accounts.update', $account->id)}}">
             @method('PUT')
             @csrf
+             <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="account_number">Account Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control @error('account_number') is-invalid @enderror" placeholder="account number"
+                        name="account_number" value="{{ old('account_number', $account->account_number) }}">
+                    @error('account_number')
+                    <small class="text-danger">
+                        {{$message}}
+                    </small>
+                    @enderror
+                </div>
+            </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="name">Name</label>
                 <div class="col-sm-10">

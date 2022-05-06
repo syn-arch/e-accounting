@@ -17,6 +17,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', DashboardController::class);
     Route::get('/reports', [ReportController::class, 'index']);
+    Route::get('/reports/transactions', [ReportController::class, 'transactions']);
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::post('/profile/{user}', [ProfileController::class, 'update']);
 

@@ -12,11 +12,11 @@
                 <form action="">
                     <div class="mb-3">
                         <label for="start">Start</label>
-                        <input type="month" name="start" id="start" class="form-control" value="{{request('start')}}">
+                        <input type="date" name="start" id="start" class="form-control" value="{{request('start')}}">
                     </div>
                     <div class="mb-3">
                         <label for="end">End</label>
-                        <input type="month" name="end" id="end" class="form-control" value="{{request('end')}}">
+                        <input type="date" name="end" id="end" class="form-control" value="{{request('end')}}">
                     </div>
                     <div class="mb-3 d-grid">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -35,20 +35,24 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Month</th>
-                        <th>Category</th>
-                        <th>Income</th>
-                        <th>Expense</th>
+                        <th>Date</th>
+                        <th>Reff No</th>
+                        <th>Account Number</th>
+                        <th>Description</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($reports as $report)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$report->month}}</td>
-                        <td>{{$report->category}}</td>
-                        <td class="text-end">{{ $report->income ? number_format($report->income) : 0}}</td>
-                        <td class="text-end">{{ $report->expense ? number_format($report->expense) : 0}}</td>
+                        <td>{{$report->created_at}}</td>
+                        <td>{{$report->reff_no}}</td>
+                        <td>{{$report->account_number}}</td>
+                        <td>{{$report->description}}</td>
+                        <td class="text-end">{{ $report->debit ? number_format($report->debit) : 0}}</td>
+                        <td class="text-end">{{ $report->credit ? number_format($report->credit) : 0}}</td>
                     </tr>
                     @endforeach
                 </tbody>

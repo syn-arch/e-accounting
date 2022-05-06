@@ -67,8 +67,8 @@ class TransactionController extends Controller
                         'id_transaction' => $transaction->id,
                         'id_account' => $request->id_account[$i],
                         'description' => $request->description[$i],
-                        'debit' => $request->debit[$i],
-                        'credit' => $request->credit[$i],
+                        'debit' => str_replace('.', '', $request->debit[$i]),
+                        'credit' => str_replace('.', '', $request->credit[$i]),
                     ]);
                 }
             }
@@ -143,8 +143,8 @@ class TransactionController extends Controller
                         'id_transaction' => $transaction->id,
                         'id_account' => $request->id_account[$i],
                         'description' => $request->description[$i],
-                        'debit' => $request->debit[$i],
-                        'credit' => $request->credit[$i],
+                        'debit' => str_replace('.', '', $request->debit[$i]),
+                        'credit' => str_replace('.', '', $request->credit[$i]),
                     ]);
                 }
             }

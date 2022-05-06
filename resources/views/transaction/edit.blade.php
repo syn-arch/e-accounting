@@ -52,8 +52,8 @@
                                             </select>
                                         </td>
                                         <td class="text-right"><input type="text" class="form-control" autocomplete="off" placeholder="description" name="description[]" value="{{$transaction_detail->description}}"></td>
-                                        <td class="text-right"><input type="text" class="form-control" autocomplete="off" placeholder="debit" name="debit[]" value="{{$transaction_detail->debit}}"></td>
-                                        <td class="text-right"><input type="text" class="form-control" autocomplete="off" placeholder="credit" name="credit[]" value="{{$transaction_detail->credit}}"></td>
+                                        <td class="text-right"><input type="text" class="form-control" autocomplete="off" placeholder="debit" name="debit[]" value="{{ $transaction_detail->debit ? number_format($transaction_detail->debit) : ''}}"></td>
+                                        <td class="text-right"><input type="text" class="form-control" autocomplete="off" placeholder="credit" name="credit[]" value="{{ $transaction_detail->credit ? number_format($transaction_detail->credit) : ''}}"></td>
                                         <td class="text-center">
                                             <button class="btn btn-danger btn-sm remove-from-table">
                                                 <i class="bx bx-trash me-1"></i>

@@ -33,8 +33,8 @@
                         <td>{{ strftime( "%A, %d %B %Y %H:%M", strtotime($transaction->created_at))}}</td>
                         <td>{{$transaction->user->name}}</td>
                         <td>{{$transaction->reff_no}}</td>
-                        <td>{{number_format($transaction->total_debit)}}</td>
-                        <td>{{number_format($transaction->total_credit)}}</td>
+                        <td class="text-end">{{number_format($transaction->total_debit)}}</td>
+                        <td class="text-end">{{number_format($transaction->total_credit)}}</td>
                         <td>
                             <a class="btn btn-warning" href="{{ route('transactions.edit', $transaction->id) }}"><i
                                     class="bx bx-edit-alt me-1"></i>

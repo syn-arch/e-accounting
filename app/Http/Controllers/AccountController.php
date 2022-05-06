@@ -40,6 +40,7 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'account_number' => 'required',
             'name' => 'required',
             'id_category' => 'required',
         ]);
@@ -81,6 +82,7 @@ class AccountController extends Controller
     public function update(Request $request, Account $account)
     {
         $request->validate([
+            'account_number' => 'required',
             'name' => 'required',
             'id_category' => 'required',
         ]);
