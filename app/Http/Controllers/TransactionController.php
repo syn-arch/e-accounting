@@ -49,8 +49,8 @@ class TransactionController extends Controller
 
             for ($i = 0; $i < count($request->id_account); $i++) {
                 if ($request->id_account[$i] != null) {
-                    $total_debit += str_replace('.', '', $request->debit[$i]) == '' ? 0 : str_replace('.', '', $request->debit[$i]);
-                    $total_credit += str_replace('.', '', $request->credit[$i]) == '' ? 0 : str_replace('.', '', $request->credit[$i]);
+                    $total_debit += str_replace(',', '', $request->debit[$i]) == '' ? 0 : str_replace(',', '', $request->debit[$i]);
+                    $total_credit += str_replace(',', '', $request->credit[$i]) == '' ? 0 : str_replace(',', '', $request->credit[$i]);
                 }
             }
 
@@ -67,8 +67,8 @@ class TransactionController extends Controller
                         'id_transaction' => $transaction->id,
                         'id_account' => $request->id_account[$i],
                         'description' => $request->description[$i],
-                        'debit' => str_replace('.', '', $request->debit[$i]),
-                        'credit' => str_replace('.', '', $request->credit[$i]),
+                        'debit' => str_replace(',', '', $request->debit[$i]),
+                        'credit' => str_replace(',', '', $request->credit[$i]),
                     ]);
                 }
             }
@@ -125,8 +125,8 @@ class TransactionController extends Controller
 
             for ($i = 0; $i < count($request->id_account); $i++) {
                 if ($request->id_account[$i] != null) {
-                    $total_debit += str_replace('.', '', $request->debit[$i]) == '' ? 0 : str_replace('.', '', $request->debit[$i]);
-                    $total_credit += str_replace('.', '', $request->credit[$i]) == '' ? 0 : str_replace('.', '', $request->credit[$i]);
+                    $total_debit += str_replace(',', '', $request->debit[$i]) == '' ? 0 : str_replace(',', '', $request->debit[$i]);
+                    $total_credit += str_replace(',', '', $request->credit[$i]) == '' ? 0 : str_replace(',', '', $request->credit[$i]);
                 }
             }
 
@@ -143,8 +143,8 @@ class TransactionController extends Controller
                         'id_transaction' => $transaction->id,
                         'id_account' => $request->id_account[$i],
                         'description' => $request->description[$i],
-                        'debit' => str_replace('.', '', $request->debit[$i]),
-                        'credit' => str_replace('.', '', $request->credit[$i]),
+                        'debit' => str_replace(',', '', $request->debit[$i]),
+                        'credit' => str_replace(',', '', $request->credit[$i]),
                     ]);
                 }
             }

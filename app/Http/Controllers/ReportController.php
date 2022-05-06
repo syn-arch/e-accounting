@@ -26,9 +26,24 @@ class ReportController extends Controller
             ->whereBetween(DB::raw('MONTH(transaction_details.created_at)'), [$start_month, $end_month])
             ->whereBetween(DB::raw('YEAR(transaction_details.created_at)'), [$start_year, $end_year])
             ->groupBy('category', 'month')
+            ->orderBy('transaction_details.created_at', 'asc')
             ->get();
 
-        return view('report.index', compact('reports'));
+        $total_income = DB::table('transaction_details')
+            ->select(DB::raw("sum(debit) as income"))
+            ->whereBetween(DB::raw('MONTH(transaction_details.created_at)'), [$start_month, $end_month])
+            ->whereBetween(DB::raw('YEAR(transaction_details.created_at)'), [$start_year, $end_year])
+            ->orderBy('transaction_details.created_at', 'asc')
+            ->first()->income;
+
+        $total_expense = DB::table('transaction_details')
+            ->select(DB::raw("sum(credit) as expense"))
+            ->whereBetween(DB::raw('MONTH(transaction_details.created_at)'), [$start_month, $end_month])
+            ->whereBetween(DB::raw('YEAR(transaction_details.created_at)'), [$start_year, $end_year])
+            ->orderBy('transaction_details.created_at', 'asc')
+            ->first()->expense;
+
+        return view('report.index', compact('reports', 'total_income', 'total_expense'));
     }
 
     public function transactions()
@@ -40,6 +55,7 @@ class ReportController extends Controller
             ->join('accounts', 'transaction_details.id_account', '=', 'accounts.id')
             ->join('transactions', 'transaction_details.id_transaction', '=', 'transactions.id')
             ->whereBetween(DB::raw('DATE(transaction_details.created_at)'), [$start, $end])
+            ->orderBy('transaction_details.created_at', 'asc')
             ->get();
 
         return view('report.transaction', compact('reports'));

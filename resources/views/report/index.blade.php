@@ -52,7 +52,20 @@
                     </tr>
                     @endforeach
                 </tbody>
-
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-end">{{ $total_income ? number_format($total_income) : 0}}</td>
+                        <td class="text-end">{{ $total_expense ? number_format($total_expense) : 0}}</td>
+                    </tr>
+                     <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-end">Net Income</td>
+                        <td class="text-end">{{ number_format($total_income - $total_expense)}}</td>
+                    </tr>
             </table>
         </div>
     </div>

@@ -38,6 +38,7 @@
                         <th>Date</th>
                         <th>Reff No</th>
                         <th>Account Number</th>
+                        <th>Account Name</th>
                         <th>Description</th>
                         <th>Debit</th>
                         <th>Credit</th>
@@ -50,6 +51,7 @@
                         <td>{{$report->created_at}}</td>
                         <td>{{$report->reff_no}}</td>
                         <td>{{$report->account_number}}</td>
+                        <td>{{$report->name}}</td>
                         <td>{{$report->description}}</td>
                         <td class="text-end">{{ $report->debit ? number_format($report->debit) : 0}}</td>
                         <td class="text-end">{{ $report->credit ? number_format($report->credit) : 0}}</td>
