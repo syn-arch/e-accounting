@@ -14,7 +14,7 @@
         </div>
         @endif
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                     <tr>
                         <th>No</th>

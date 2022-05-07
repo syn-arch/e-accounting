@@ -31,7 +31,7 @@
 <div class="card mt-4">
     <div class="card-body">
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                     <tr>
                         <th rowspan="2">
@@ -92,6 +92,8 @@
                             @endforeach
                         </tr>
                     @endforeach
+                </tbody>
+                <tfoot>
                     <tr class="bg-success">
                         <td>Total Income</td>
                         @foreach ($balances as $balance)
@@ -110,7 +112,7 @@
                         <td>{{ number_format($balance['income'] - $balance['expense']) }}</td>
                         @endforeach
                     </tr>
-                </tbody>
+                </tfoot>
             </table>
         </div>
     </div>

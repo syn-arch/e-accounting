@@ -31,7 +31,7 @@
 <div class="card mt-4">
     <div class="card-body">
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -48,7 +48,7 @@
                     @foreach ($reports as $report)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$report->created_at}}</td>
+                        <td>{{ strftime( "%A, %d %B %Y %H:%M", strtotime($report->created_at))}}</td>
                         <td>{{$report->reff_no}}</td>
                         <td>{{$report->account_number}}</td>
                         <td>{{$report->name}}</td>

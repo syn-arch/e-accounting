@@ -36,7 +36,7 @@
 
     <!-- Helpers -->
     <script src="/sneat/assets/vendor/js/helpers.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="/sneat/libs/datatables/datatables.min.css"/>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/sneat/assets/js/config.js"></script>
@@ -318,6 +318,17 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script type="text/javascript" src="/sneat/libs/datatables/datatables.min.js"></script>
+    <script>
+        $(function(){
+            $('.datatable').DataTable({
+                 dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5','csvHtml5', 'pdfHtml5', 'print'
+                ]
+            });
+        })
+    </script>
 
     <!-- Main JS -->
     <script src="/sneat/assets/js/main.js"></script>
