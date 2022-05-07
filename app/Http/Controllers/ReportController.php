@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,41 +13,16 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $start_year = substr(request('start'), 0, 4);
-        $end_year = substr(request('end'), 0, 4);
+        $begin = new DateTime(request('start'));
+        $end = new DateTime(request('end'));
 
-        $start_month = substr(request('start'), 5, 2);
-        $end_month = substr(request('end'), 5, 2);
+        $end->modify('+1 month');
+        $interval = DateInterval::createFromDateString('1 month');
+        $period = new DatePeriod($begin, $interval, $end);
 
-        $reports = DB::table('transaction_details')
-            ->select(DB::raw("categories.name as category,
-            accounts.name as account,
-            sum(debit) as income,
-            sum(credit) as expense,
-            DATE_FORMAT(transaction_details.created_at, '%Y-%m') as month"))
-            ->join('accounts', 'transaction_details.id_account', '=', 'accounts.id')
-            ->join('categories', 'accounts.id_category', '=', 'categories.id')
-            ->whereBetween(DB::raw('MONTH(transaction_details.created_at)'), [$start_month, $end_month])
-            ->whereBetween(DB::raw('YEAR(transaction_details.created_at)'), [$start_year, $end_year])
-            ->groupBy('category', 'month')
-            ->orderBy('transaction_details.created_at', 'asc')
-            ->get();
+        $categories = Category::all();
 
-        $total_income = DB::table('transaction_details')
-            ->select(DB::raw("sum(debit) as income"))
-            ->whereBetween(DB::raw('MONTH(transaction_details.created_at)'), [$start_month, $end_month])
-            ->whereBetween(DB::raw('YEAR(transaction_details.created_at)'), [$start_year, $end_year])
-            ->orderBy('transaction_details.created_at', 'asc')
-            ->first()->income;
-
-        $total_expense = DB::table('transaction_details')
-            ->select(DB::raw("sum(credit) as expense"))
-            ->whereBetween(DB::raw('MONTH(transaction_details.created_at)'), [$start_month, $end_month])
-            ->whereBetween(DB::raw('YEAR(transaction_details.created_at)'), [$start_year, $end_year])
-            ->orderBy('transaction_details.created_at', 'asc')
-            ->first()->expense;
-
-        return view('report.index', compact('reports', 'total_income', 'total_expense'));
+        return view('report.index', compact('categories', 'period'));
     }
 
     public function transactions()
