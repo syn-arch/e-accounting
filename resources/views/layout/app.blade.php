@@ -162,6 +162,7 @@
                             </li>
                         </ul>
                     </li>
+                    @if (auth()->user()->role === 'admin')
                     <li class="menu-item {{ request()->segment(1) == "reports" ? 'open' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-pie-chart-alt"></i>
@@ -180,6 +181,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <li class="menu-item {{ request()->is('profile') ? 'active' : ''}}">
                         <a href="/profile" class="menu-link">
                             <i class='menu-icon tf-icons bx bx-user'></i>

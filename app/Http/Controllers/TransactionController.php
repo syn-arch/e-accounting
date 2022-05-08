@@ -17,7 +17,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::orderBy('id', 'asc')->get();
+        if (auth()->user()->role == 'akuntan') {
+            $transactions = Transaction::where('id_user', auth()->user()->id)->orderBy('id', 'asc')->get();
+        } else {
+            $transactions = Transaction::orderBy('id', 'asc')->get();
+        }
         return view('transaction.index', compact('transactions'));
     }
 
