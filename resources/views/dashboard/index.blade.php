@@ -253,7 +253,7 @@
             totalRevenueChartOptions = {
             series: [
                 {
-                name: '2022',
+                name: {!! date('Y') !!},
                 data: {!! json_encode($income_chart_value) !!},
                 },
             ],
@@ -548,11 +548,14 @@
                 }
             ],
             xaxis: {
-                show: false,
-                lines: {
-                show: false
-                },
+                categories: {!! json_encode($expense_chart_label) !!},
                 labels: {
+                style: {
+                    fontSize: '13px',
+                    colors: axisColor
+                }
+                },
+                axisTicks: {
                 show: false
                 },
                 axisBorder: {
