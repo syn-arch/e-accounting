@@ -88,7 +88,7 @@
 
                                 $amount = $income == 0 ? $expense : $income;
                             @endphp
-                                <td>{{ number_format($amount) }}</td>
+                                <td class="text-end">{{ number_format($amount) }}</td>
                             @endforeach
                         </tr>
                     @endforeach
@@ -97,19 +97,19 @@
                     <tr class="bg-success">
                         <td>Total Income</td>
                         @foreach ($balances as $balance)
-                            <td>{{ number_format($balance['income']) }}</td>
+                            <td class="text-end">{{ number_format($balance['income']) }}</td>
                         @endforeach
                     </tr>
                     <tr class="bg-warning">
                         <td>Total Expense</td>
                         @foreach ($balances as $balance)
-                            <td>{{ number_format($balance['expense']) }}</td>
+                            <td class="text-end">{{ number_format($balance['expense']) }}</td>
                         @endforeach
                     </tr>
                     <tr>
                         <td>Net Income</td>
                         @foreach ($balances as $balance)
-                        <td>{{ number_format($balance['income'] - $balance['expense']) }}</td>
+                        <td class="text-end">{{ number_format($balance['income'] - $balance['expense']) }}</td>
                         @endforeach
                     </tr>
                 </tfoot>

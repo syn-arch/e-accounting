@@ -318,6 +318,7 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="/sneat/assets/vendor/libs/apex-charts/apexcharts.js"></script>
     <script type="text/javascript" src="/sneat/libs/datatables/datatables.min.js"></script>
     <script>
         $(function(){
