@@ -325,7 +325,10 @@
             $('.datatable').DataTable({
                  dom: 'Bfrtip',
                 buttons: [
-                    'copyHtml5','csvHtml5', 'pdfHtml5', 'print'
+                    { extend: 'copyHtml5', footer: true },
+                    { extend: 'csvHtml5', footer: true },
+                    { extend: 'pdfHtml5', footer: true },
+                    { extend: 'print', footer: true },
                 ]
             });
         })

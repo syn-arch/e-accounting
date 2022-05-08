@@ -92,20 +92,20 @@
                             @endforeach
                         </tr>
                     @endforeach
-                </tbody>
-                <tfoot>
                     <tr class="bg-success">
-                        <td>Total Income</td>
+                        <td><span class="d-none">z</span>Total Income</td>
                         @foreach ($balances as $balance)
                             <td class="text-end">{{ number_format($balance['income']) }}</td>
                         @endforeach
                     </tr>
                     <tr class="bg-warning">
-                        <td>Total Expense</td>
+                        <td><span class="d-none">z</span>Total Expense</td>
                         @foreach ($balances as $balance)
                             <td class="text-end">{{ number_format($balance['expense']) }}</td>
                         @endforeach
                     </tr>
+                </tbody>
+                <tfoot>
                     <tr>
                         <td>Net Income</td>
                         @foreach ($balances as $balance)

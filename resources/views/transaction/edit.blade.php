@@ -11,6 +11,14 @@
         <form action="{{ route('transactions.update', $transaction->id) }}" method="POST">
             @csrf
             @method('PUT')
+            <div class="row mb-2">
+                <div class="col-lg-2">
+                    <strong>Date</strong>
+                </div>
+                <div class="col-md-4">
+                    <input type="datetime-local" step="any" class="form-control" name="created_at" autocomplete="off" required value="{{ date('Y-m-d\TH:i:s', strtotime($transaction->created_at)); }}">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-2">
                     <strong>Reff No</strong>

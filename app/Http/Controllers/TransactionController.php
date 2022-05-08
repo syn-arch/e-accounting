@@ -17,7 +17,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::orderBy('created_at', 'asc')->get();
+        $transactions = Transaction::orderBy('id', 'asc')->get();
         return view('transaction.index', compact('transactions'));
     }
 
@@ -55,6 +55,7 @@ class TransactionController extends Controller
             }
 
             $transaction = Transaction::create([
+                'created_at' => $request->created_at,
                 'reff_no' => $request->reff_no,
                 'id_user' => auth()->user()->id,
                 'total_debit' => $total_debit,
@@ -131,6 +132,7 @@ class TransactionController extends Controller
             }
 
             $transaction = Transaction::create([
+                'created_at' => $request->created_at,
                 'reff_no' => $request->reff_no,
                 'id_user' => auth()->user()->id,
                 'total_debit' => $total_debit,

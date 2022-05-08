@@ -10,6 +10,14 @@
     <div class="card-body">
         <form action="{{ route('transactions.store') }}" method="POST">
             @csrf
+            <div class="row mb-2">
+                <div class="col-lg-2">
+                    <strong>Date</strong>
+                </div>
+                <div class="col-md-4">
+                    <input type="datetime-local" step="any" class="form-control" name="created_at" autocomplete="off" required value="{{ date('Y-m-d\TH:i:s', strtotime(date('Y-m-d H:i:s'))); }}">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-2">
                     <strong>Reff No</strong>
