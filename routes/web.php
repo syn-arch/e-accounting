@@ -22,8 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [ProfileController::class, 'index']);
     Route::post('/profile/{user}', [ProfileController::class, 'update']);
 
+    Route::resource('/users', UserController::class)->middleware('checkRole:admin');
+
     Route::resources([
-        '/users' => UserController::class,
         '/categories' => CategoryController::class,
         '/accounts' => AccountController::class,
         '/transactions' => TransactionController::class,

@@ -127,11 +127,13 @@
                             <div data-i18n="Layouts">Master Data</div>
                         </a>
                         <ul class="menu-sub">
+                        @if (auth()->user()->role === 'admin')
                             <li class="menu-item {{ request()->is('users') ? 'active' : ''}} {{ request()->segment(1) == "users" ? 'active' : '' }}">
                                 <a href="/users" class="menu-link">
                                     <div data-i18n="Without menu">Users</div>
                                 </a>
                             </li>
+                        @endif
                             <li class="menu-item {{ request()->is('categories') ? 'active' : ''}} {{ request()->segment(1) == "categories" ? 'active' : '' }}">
                                 <a href="/categories" class="menu-link">
                                     <div data-i18n="Without menu">Categories</div>
